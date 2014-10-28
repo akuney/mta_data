@@ -1,5 +1,6 @@
 #!/bin/sh
 # migration four
+#done
 
 # service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
 

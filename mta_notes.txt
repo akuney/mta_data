@@ -1,0 +1,17 @@
+Have the database in there! Trying out some queries.
+
+WITH gct_id AS
+(SELECT stop_id FROM stops WHERE stop_name = 'Yonkers'),
+
+gct_trip_ids AS
+(SELECT DISTINCT trip_id FROM stop_times WHERE stop_id = (SELECT stop_id FROM gct_id)),
+
+same_trip_stop_ids AS
+(SELECT DISTINCT stop_id FROM stop_times WHERE trip_id IN (SELECT trip_id FROM gct_trip_ids)),
+
+same_trip_stops AS
+(SELECT stop_name FROM stops WHERE stop_id IN (SELECT stop_id FROM same_trip_stop_ids))
+
+SELECT * FROM same_trip_stops
+WHERE stop_name <> 'Yonkers'
+
